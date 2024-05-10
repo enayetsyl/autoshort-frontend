@@ -55,7 +55,7 @@ const getUserData = async (userData) => {
     try {
       setLoading(true)
       console.log('user data fetched,', userData)
-        const response = await axios.post(`https://autoshort-single-backend.onrender.com/user`, userData)
+        const response = await axios.post(`http:localhost:3000/user`, userData)
         const data = await response?.data;
         console.log('res', response)
         if(data?.email){
