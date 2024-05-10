@@ -53,7 +53,7 @@ console.log(user?.email)
 const getUserData = async (userData) => { 
     try {
       setLoading(true)
-        const response = await axios.post(`https://6c5a-103-142-80-163.ngrok-free.app/user`, userData)
+        const response = await axios.post(`https://autoshort-single-backend.onrender.com/user`, userData)
         const data = await response?.data;
         console.log('res', response)
         if(data?.email){

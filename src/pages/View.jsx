@@ -15,7 +15,7 @@ console.log('seried data', seriesData)
     const fetchSeriesData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`https://6c5a-103-142-80-163.ngrok-free.app/series_info?email=${userPlan?.email}`);
+        const response = await axios.get(`https://autoshort-single-backend.onrender.com/series_info?email=${userPlan?.email}`);
         setSeriesData(response?.data);
       } catch (error) {
         console.error(error);
@@ -30,7 +30,7 @@ console.log('seried data', seriesData)
   const handleConnectYoutube = (item) => { 
     console.log('item inside youtube connect', item._id)
     sessionStorage.setItem('taskId', item._id); 
-    window.location.href = 'https://6c5a-103-142-80-163.ngrok-free.app/connect_youtube'
+    window.location.href = 'https://autoshort-single-backend.onrender.com/connect_youtube'
    }
 
    useEffect(() => {
@@ -54,7 +54,7 @@ console.log('seried data', seriesData)
 
       if (googleIdFromUrl && taskIdFromStorage) {
         try {
-            const response = await axios.patch(`https://6c5a-103-142-80-163.ngrok-free.app/googleId?taskId=${taskIdFromStorage}`, {
+            const response = await axios.patch(`https://autoshort-single-backend.onrender.com/googleId?taskId=${taskIdFromStorage}`, {
                 googleId: googleIdFromUrl
             });
             console.log('Server response for patch:', response.data);
@@ -76,7 +76,7 @@ console.log('seried data', seriesData)
       return
     }
     try {
-      const response = await axios.post(`https://6c5a-103-142-80-163.ngrok-free.app/scheduled_video`, {
+      const response = await axios.post(`https://autoshort-single-backend.onrender.com/scheduled_video`, {
         email: userPlan?.email,
         seriesId: item._id,
         postADay: 1,
@@ -96,7 +96,7 @@ console.log('seried data', seriesData)
       return
     }
     try {
-      const response = await axios.post(`https://6c5a-103-142-80-163.ngrok-free.app/generate_video`, {
+      const response = await axios.post(`https://autoshort-single-backend.onrender.com/generate_video`, {
         email: userPlan?.email,
         seriesId: item._id,
        });
