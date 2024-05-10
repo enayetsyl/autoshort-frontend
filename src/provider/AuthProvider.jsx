@@ -53,6 +53,7 @@ console.log(user?.email)
 const getUserData = async (userData) => { 
     try {
       setLoading(true)
+      console.log('user data fetched,', userData)
         const response = await axios.post(`https://autoshort-single-backend.onrender.com/user`, userData)
         const data = await response?.data;
         console.log('res', response)
@@ -67,14 +68,13 @@ const getUserData = async (userData) => {
     }
  }
  useEffect(() => {
-    if (user && !userPlan) {
-     
-        const userData = {
-            email : user?.email,
-          }
-      getUserData(userData)
-    }
-  }, [user, userPlan])
+  if (user && user.email && !userPlan) {
+    const userData = {
+      email: user.email,
+    };
+    getUserData(userData);
+  }
+}, [user, userPlan]);
 
   // if(loading){
   //   return <Loading/>
