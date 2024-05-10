@@ -17,12 +17,12 @@ const Create = () => {
   const [duration, setDuration] = useState(null);
   const [customContent, setCustomContent] = useState('');
   const { userPlan } = useContext(AuthContext);
+  const user = localStorage.getItem('user');
   
   
   const handleGenerateVideo = async () => { 
-   
     const data = {
-      userEmail: userPlan.email,
+      userEmail: user.email,
       destination: destination?.name,
       content: content?.name,
       narrator: narrator?.name, 
@@ -33,8 +33,9 @@ const Create = () => {
     try {
       const response = await axios.post('http://localhost:3000/series', data);
       const resData = await response.data
-      console.log(response)
+      console.log(resData)
       console.log(response.data)
+      alert(`${resData}`)
     } catch (error) {
       console.error('Error sending video generation request:', error);
      
