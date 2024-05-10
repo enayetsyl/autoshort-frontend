@@ -30,7 +30,7 @@ const Create = () => {
     }
     console.log(data)
     try {
-      const response = await axios.post('http:localhost:3000/series', data);
+      const response = await axios.post('https://autoshort-single-backend.onrender.com/series', data);
       const resData = await response.data
       console.log(resData)
       console.log(response.data)
