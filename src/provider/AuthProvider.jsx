@@ -10,10 +10,11 @@ const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({children}) => {
-  const user = localStorage.getItem('user');
+  const [user, setUser] = useState(null)
+  // const user = localStorage.getItem('user');
   const [loading, setLoading] = useState(false)
   const [userPlan, setUserPlan] = useState(null)
-  // console.log('user in auth', user)
+  console.log('user in auth', user?.email)
   // console.log('user plan in auth', userPlan)
   const googleSignIn = () => {
       return signInWithPopup(auth, googleProvider)
@@ -27,10 +28,10 @@ const AuthProvider = ({children}) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser => {
       if (currentUser) {
         localStorage.setItem('user', JSON.stringify(currentUser));
-        // setUser(currentUser);
+        setUser(currentUser);
       } else {
         localStorage.removeItem('user');
-        // setUser(null);
+        setUser(null);
       }
       setLoading(false);
     }))
