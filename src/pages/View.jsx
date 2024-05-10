@@ -2,10 +2,9 @@ import  { useContext,useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
-import Loading from '../components/Loading';
 
 const View = () => {
-  const { userPlan, loading, setLoading } = useContext(AuthContext);
+  const { userPlan, setLoading } = useContext(AuthContext);
   const [seriesData, setSeriesData] = useState([]);
   const [googleId, setGoogleId] = useState('');
     const [taskId, setTaskId] = useState('');

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import  { useState } from 'react'
 import Step from '../components/Step'
 import GradientHeading from '../components/GradientHeading'
 import SelectOption from '../components/SelectOption';
@@ -6,8 +6,7 @@ import ContentSelect from '../components/ContentSelect';
 import VoiceOption from '../components/VoiceOption';
 import axios from 'axios';
 import { destinationOptions, durationOptions, languageOptions,contentOptions, narrationOptions  } from '../constant/index.jsx';
-import { AuthContext } from '../provider/AuthProvider.jsx';
-import Loading from '../components/Loading.jsx';
+
 
 const Create = () => {
   const [destination, setDestination] = useState(null);
@@ -16,9 +15,9 @@ const Create = () => {
   const [language, setLanguage] = useState(null);
   const [duration, setDuration] = useState(null);
   const [customContent, setCustomContent] = useState('');
-  const { userPlan } = useContext(AuthContext);
+  // const { userPlan } = useContext(AuthContext);
   const user = localStorage.getItem('user');
-  
+  console.log('create user email', )
   
   const handleGenerateVideo = async () => { 
     const data = {

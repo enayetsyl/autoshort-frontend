@@ -1,8 +1,7 @@
-import  { createContext, useContext, useEffect, useState } from "react";
+import  { createContext,  useEffect, useState } from "react";
 import { GoogleAuthProvider,  getAuth, onAuthStateChanged, signInWithPopup, signOut,  } from 'firebase/auth'
 import app from "../firebase/firebase.config";
 import axios from "axios";
-import Loading from "../components/Loading";
 
 
 
@@ -11,7 +10,7 @@ const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({children}) => {
-  const [user, setUser] = useState(null)
+  const user = localStorage.getItem('user');
   const [loading, setLoading] = useState(false)
   const [userPlan, setUserPlan] = useState(null)
   // console.log('user in auth', user)
@@ -28,10 +27,10 @@ const AuthProvider = ({children}) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser => {
       if (currentUser) {
         localStorage.setItem('user', JSON.stringify(currentUser));
-        setUser(currentUser);
+        // setUser(currentUser);
       } else {
         localStorage.removeItem('user');
-        setUser(null);
+        // setUser(null);
       }
       setLoading(false);
     }))
@@ -41,12 +40,12 @@ const AuthProvider = ({children}) => {
     }
   },[])
 
-  useEffect(() => {
-    const localUser = localStorage.getItem('user');
-    if (localUser) {
-      setUser(JSON.parse(localUser));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const localUser = localStorage.getItem('user');
+  //   if (localUser) {
+  //     setUser(JSON.parse(localUser));
+  //   }
+  // }, []);
   
   
 console.log(user?.email)
@@ -85,7 +84,7 @@ const getUserData = async (userData) => {
     user, 
     loading,
     googleSignIn, 
-    setUser,
+    // setUser,
     logOut,
     userPlan,
     setLoading
