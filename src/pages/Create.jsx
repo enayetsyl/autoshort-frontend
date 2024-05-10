@@ -30,7 +30,7 @@ const Create = () => {
     }
     console.log(data)
     try {
-      const response = await axios.post('http://localhost:3000/series', data);
+      const response = await axios.post('https://6c5a-103-142-80-163.ngrok-free.app/series', data);
       const resData = await response.data
       console.log(resData)
       console.log(response.data)
