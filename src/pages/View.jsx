@@ -10,12 +10,13 @@ const View = () => {
     const [taskId, setTaskId] = useState('');
 console.log('google and task id', googleId, taskId)
 
+
 console.log('seried data', seriesData)
   useEffect(() => {
     const fetchSeriesData = async () => {
       setLoading(true)
       try {
-        const response = await axios.get(`https://autoshort-single-backend.onrender.com/series_info?email=${userPlan?.email}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND}/series_info?email=${userPlan?.email}`);
         setSeriesData(response?.data);
       } catch (error) {
         console.error(error);
@@ -30,7 +31,7 @@ console.log('seried data', seriesData)
   const handleConnectYoutube = (item) => { 
     console.log('item inside youtube connect', item._id)
     sessionStorage.setItem('taskId', item._id); 
-    window.location.href = 'https://autoshort-single-backend.onrender.com/connect_youtube'
+    window.location.href = `${import.meta.env.VITE_BACKEND}/connect_youtube`
    }
 
    useEffect(() => {
@@ -54,7 +55,7 @@ console.log('seried data', seriesData)
 
       if (googleIdFromUrl && taskIdFromStorage) {
         try {
-            const response = await axios.patch(`https://autoshort-single-backend.onrender.com/googleId?taskId=${taskIdFromStorage}`, {
+            const response = await axios.patch(`${import.meta.env.VITE_BACKEND}/googleId?taskId=${taskIdFromStorage}`, {
                 googleId: googleIdFromUrl
             });
             console.log('Server response for patch:', response.data);
@@ -76,10 +77,11 @@ console.log('seried data', seriesData)
       return
     }
     try {
-      const response = await axios.post(`https://autoshort-single-backend.onrender.com/scheduled_video`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/scheduled_video`, {
         email: userPlan?.email,
         seriesId: item._id,
         postADay: 1,
+        googleId
 
       });
       console.log(response?.data);
@@ -96,7 +98,7 @@ console.log('seried data', seriesData)
       return
     }
     try {
-      const response = await axios.post(`https://autoshort-single-backend.onrender.com/generate_video`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/generate_video`, {
         email: userPlan?.email,
         seriesId: item._id,
        });

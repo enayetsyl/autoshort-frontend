@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import  { useContext, useState } from 'react'
 import Step from '../components/Step'
 import GradientHeading from '../components/GradientHeading'
 import SelectOption from '../components/SelectOption';
@@ -6,22 +6,24 @@ import ContentSelect from '../components/ContentSelect';
 import VoiceOption from '../components/VoiceOption';
 import axios from 'axios';
 import { destinationOptions, durationOptions, languageOptions,contentOptions, narrationOptions  } from '../constant/index.jsx';
+import { AuthContext } from '../provider/AuthProvider.jsx';
 
 
 const Create = () => {
+
   const [destination, setDestination] = useState(null);
   const [content, setContent] = useState(null);
   const [narrator, setNarrator] = useState(null);
   const [language, setLanguage] = useState(null);
   const [duration, setDuration] = useState(null);
   const [customContent, setCustomContent] = useState('');
-  // const { userPlan } = useContext(AuthContext);
-  const user = localStorage.getItem('user');
-  console.log('create user email', )
+  const {  user } = useContext(AuthContext);
+  // const user = localStorage.getItem('user');
+  // console.log('create user email',user.email )
   
   const handleGenerateVideo = async () => { 
     const data = {
-      userEmail: user.email,
+      userEmail: user?.email,
       destination: destination?.name,
       content: content?.name,
       narrator: narrator?.name, 
@@ -30,7 +32,7 @@ const Create = () => {
     }
     console.log(data)
     try {
-      const response = await axios.post('https://autoshort-single-backend.onrender.com/series', data);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/series`, data);
       const resData = await response.data
       console.log(resData)
       console.log(response.data)
