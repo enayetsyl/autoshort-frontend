@@ -11,7 +11,7 @@ const View = () => {
 console.log('google and task id', googleId, taskId)
 
 
-console.log('seried data inside view', seriesData)
+console.log('seried data', seriesData)
   useEffect(() => {
     const fetchSeriesData = async () => {
       setLoading(true)
