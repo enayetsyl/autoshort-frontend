@@ -30,14 +30,6 @@ const Navbar = () => {
     };
   }, []);
 
-
-
-
-
-
-
-
-
   return (
     <div className="bg-primary border-b-2 border-accent ">
       <div className="max-w-6xl mx-auto py-4 px-5">
@@ -86,26 +78,28 @@ const Navbar = () => {
               <GiHamburgerMenu />
             </div>
             {isDropdownOpen && (
-              <div className="absolute top-8 w-32 right-0 bg-primary border border-accent rounded-md shadow-md ">
-                <Link to="#pricing">
+              <div className="absolute top-8 w-32 right-0 bg-primary border border-accent rounded-md shadow-md">
+                {/* <Link to="#pricing">
                   <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
                     Pricing
                   </button>
-                </Link>
+                </Link> */}
 
                 <Link to="/login">
-                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
+                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg block w-full">
                     Login
                   </button>
                 </Link>
 
                 <Link to="register">
                   {" "}
-                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
+                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg block w-full">
                     Sign Up
                   </button>
                 </Link>
-                <button onClick={logOut}>Logout</button>
+                <button 
+                className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg block w-full"
+                onClick={logOut}>Logout</button>
               </div>
             )}
           </div>

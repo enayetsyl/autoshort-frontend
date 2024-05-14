@@ -136,9 +136,9 @@ console.log('seried data', seriesData)
           <button className='bg-gradient-to-r block from-primary to-blue-700 text-white py-3 px-6 text-lg rounded-lg font-semibold '
           onClick={() => handleScheduleVideo(item)}
           >SCHEDULE VIDEO</button>
-          <button className='bg-gradient-to-r block from-primary to-blue-700 text-white py-3 px-6 text-lg rounded-lg font-semibold '
+          {/*<button className='bg-gradient-to-r block from-primary to-blue-700 text-white py-3 px-6 text-lg rounded-lg font-semibold '
           onClick={() => handlePostVideo(item)}
-          >POST A VIDEO</button>
+       >POST A VIDEO</button>*/}
       </div>
         </div>
        ))
