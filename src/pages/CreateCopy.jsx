@@ -1,9 +1,9 @@
 import  { useContext, useState } from 'react'
-import Step from '../components/Step'
-import GradientHeading from '../components/GradientHeading'
-import SelectOption from '../components/SelectOption';
-import ContentSelect from '../components/ContentSelect';
-import VoiceOption from '../components/VoiceOption';
+import Step from '../components/Step.jsx'
+import GradientHeading from '../components/GradientHeading.jsx'
+import SelectOption from '../components/SelectOption.jsx';
+import ContentSelect from '../components/ContentSelect.jsx';
+import VoiceOption from '../components/VoiceOption.jsx';
 import axios from 'axios';
 import { destinationOptions, durationOptions, languageOptions,contentOptions, narrationOptions  } from '../constant/index.jsx';
 import { AuthContext } from '../provider/AuthProvider.jsx';
@@ -20,48 +20,37 @@ const Create = () => {
   const [customContent, setCustomContent] = useState('');
   const {  user, setPostLoginCallback  } = useContext(AuthContext);
   const navigate = useNavigate()
-
+  // const user = localStorage.getItem('user');
+  // console.log('create user email',user.email )
   
-  const handleCreateSeries = async () => {
-    if (!destination || !content || !narrator || !language || !duration) {
-      alert('All fields are required.');
-      return;
+  const handleCreateSeries = async () => { 
+    if(!user){
+      alert('You have to login to create a series.')
+      navigate('/login')
+      return
     }
-
-    const formData = {
+    const data = {
+      userEmail: user?.email,
       destination: destination?.name,
       content: content?.name,
-      narrator: narrator?.name,
-      language: language?.name,
-      duration: duration?.name,
-      customContent,
-    };
-
-    const executeSeriesCreation = async () => {
-      const data = {
-        userEmail: user?.email,
-        ...formData,
-      };
-      try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND}/series`, data);
-        const resData = await response.data;
-        alert(`${resData.message}`);
-        navigate('/dashboard');
-      } catch (error) {
-        console.error('Error sending video generation request:', error);
-      }
-    };
-
-    if (!user) {
-      alert('You have to login to create a series.');
-      localStorage.setItem('formData', JSON.stringify(formData));
-      setPostLoginCallback(() => executeSeriesCreation); // Set callback for post-login
-      navigate('/login');
-      return;
+      narrator: narrator?.name, 
+      language: language?.name, 
+      duration: duration?.name, customContent
+    }
+    console.log(data)
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/series`, data);
+      const resData = await response.data
+      console.log(resData)
+      console.log(response.data)
+      alert(`${resData.message}`)
+    } catch (error) {
+      console.error('Error sending video generation request:', error);
+     
     }
 
-    executeSeriesCreation();
-  };
+
+   }
 
    return (
     <div className='mb-20'>

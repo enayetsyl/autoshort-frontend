@@ -15,6 +15,8 @@ const AuthProvider = ({children}) => {
   const [loading, setLoading] = useState(false)
   const [userPlan, setUserPlan] = useState(null)
   console.log('user in auth', user?.email)
+  const [postLoginCallback, setPostLoginCallback] = useState(null);
+  
   // console.log('user plan in auth', userPlan)
   const googleSignIn = () => {
       return signInWithPopup(auth, googleProvider)
@@ -24,32 +26,31 @@ const AuthProvider = ({children}) => {
     return signOut(auth)
   }
 
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser => {
+
+ useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         localStorage.setItem('user', JSON.stringify(currentUser));
         setUser(currentUser);
+        if (postLoginCallback) {
+          await postLoginCallback();
+          setPostLoginCallback(null); // Clear callback after execution
+        }
       } else {
         localStorage.removeItem('user');
         setUser(null);
       }
       setLoading(false);
-    }))
+    });
 
     return () => {
-      unSubscribe()
-    }
-  },[])
-
-  // useEffect(() => {
-  //   const localUser = localStorage.getItem('user');
-  //   if (localUser) {
-  //     setUser(JSON.parse(localUser));
-  //   }
-  // }, []);
+      unSubscribe();
+    };
+  }, [postLoginCallback]);
   
   
 console.log(user?.email)
+
 // Getting user data in the database
 const getUserData = async (userData) => { 
     try {
@@ -57,7 +58,6 @@ const getUserData = async (userData) => {
       console.log('user data fetched,', userData)
         const response = await axios.post(`${import.meta.env.VITE_BACKEND}/user`, userData)
         const data = await response?.data;
-        console.log('res', response)
         if(data?.email){
             setUserPlan(data)
         }
@@ -68,6 +68,10 @@ const getUserData = async (userData) => {
       setLoading(false)
     }
  }
+
+
+
+
  useEffect(() => {
   if (user && user?.email && !userPlan) {
     const userData = {
@@ -76,6 +80,7 @@ const getUserData = async (userData) => {
     getUserData(userData);
   }
 }, [user, userPlan]);
+
 
   // if(loading){
   //   return <Loading/>
@@ -88,7 +93,7 @@ const getUserData = async (userData) => {
     // setUser,
     logOut,
     userPlan,
-    setLoading
+    setLoading, setPostLoginCallback
   }
 
   return (
