@@ -58,7 +58,7 @@ export const durationOptions = [
     { id: 9,  name: 'ELI5' },
     { id: 10,  name: 'Philosophy' },
     { id: 11,  name: 'Product Marketing' },
-    { id: 12,  name: 'Custom' },
+    // { id: 12,  name: 'Custom' },
    
   ];
   

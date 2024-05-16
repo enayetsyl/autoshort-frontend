@@ -121,7 +121,7 @@ console.log('seried data', seriesData)
       </div>
       
     {
-      seriesData ? (
+      seriesData.length > 0 ? (
        seriesData?.map(item => (
         <div className='mt-10 p-8 w-full rounded-lg bg-slate-600' key={item?._id}>
         <p className="text-lg text-white"><span className="font-bold">Series Name:</span> {item?.content}</p>

@@ -7,6 +7,7 @@ import VoiceOption from '../components/VoiceOption';
 import axios from 'axios';
 import { destinationOptions, durationOptions, languageOptions,contentOptions, narrationOptions  } from '../constant/index.jsx';
 import { AuthContext } from '../provider/AuthProvider.jsx';
+import { useNavigate } from 'react-router-dom';
 
 
 const Create = () => {
@@ -18,10 +19,16 @@ const Create = () => {
   const [duration, setDuration] = useState(null);
   const [customContent, setCustomContent] = useState('');
   const {  user } = useContext(AuthContext);
+  const navigate = useNavigate()
   // const user = localStorage.getItem('user');
   // console.log('create user email',user.email )
   
-  const handleGenerateVideo = async () => { 
+  const handleCreateSeries = async () => { 
+    if(!user){
+      alert('You have to login to create a series.')
+      navigate('/login')
+      return
+    }
     const data = {
       userEmail: user?.email,
       destination: destination?.name,
@@ -36,7 +43,7 @@ const Create = () => {
       const resData = await response.data
       console.log(resData)
       console.log(response.data)
-      alert(`${resData}`)
+      alert(`${resData.message}`)
     } catch (error) {
       console.error('Error sending video generation request:', error);
      
@@ -131,7 +138,7 @@ const Create = () => {
         <p className='text-lg text-white/70 font-semibold pb-5'>You will be able to preview your upcoming videos before posting</p>
 
        <div className=' flex justify-center items-center'>
-       <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-3 px-20 text-lg rounded-lg font-semibold my-5' onClick={handleGenerateVideo}>CREATE SERIES</button>
+       <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-3 px-20 text-lg rounded-lg font-semibold my-5' onClick={handleCreateSeries}>CREATE SERIES</button>
        </div>
       </div>
      </div>
