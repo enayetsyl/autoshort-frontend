@@ -1,5 +1,5 @@
 import Hero from '../components/Hero'
-import Create from './Create'
+import CreateHomePage from './CreateHomePage'
 
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
     <div className=''>
       {/* <Navbar/> */}
       <Hero/>
-      <Create/>
+      <CreateHomePage/>
       {/* <HowWork/>
       <Pricing/>
       <Footer/> */}

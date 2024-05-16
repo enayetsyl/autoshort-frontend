@@ -11,8 +11,6 @@ const Login = () => {
 
   const { googleSignIn, setLoading, setPostLoginCallback  } = useContext(AuthContext);
 
- 
-
   // const handleGoogleSignIn = () => {
   //   setLoading(true);
   //   googleSignIn()

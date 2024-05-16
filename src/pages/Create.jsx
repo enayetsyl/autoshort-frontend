@@ -1,9 +1,9 @@
 import  { useContext, useState } from 'react'
-import Step from '../components/Step'
-import GradientHeading from '../components/GradientHeading'
-import SelectOption from '../components/SelectOption';
-import ContentSelect from '../components/ContentSelect';
-import VoiceOption from '../components/VoiceOption';
+import Step from '../components/Step.jsx'
+import GradientHeading from '../components/GradientHeading.jsx'
+import SelectOption from '../components/SelectOption.jsx';
+import ContentSelect from '../components/ContentSelect.jsx';
+import VoiceOption from '../components/VoiceOption.jsx';
 import axios from 'axios';
 import { destinationOptions, durationOptions, languageOptions,contentOptions, narrationOptions  } from '../constant/index.jsx';
 import { AuthContext } from '../provider/AuthProvider.jsx';
@@ -27,6 +27,7 @@ const Create = () => {
       alert('All fields are required.');
       return;
     }
+   
 
     const formData = {
       destination: destination?.name,
@@ -36,12 +37,14 @@ const Create = () => {
       duration: duration?.name,
       customContent,
     };
+    console.log('form data', formData)
 
     const executeSeriesCreation = async () => {
       const data = {
         userEmail: user?.email,
         ...formData,
       };
+      console.log('data', data)
       try {
         const response = await axios.post(`${import.meta.env.VITE_BACKEND}/series`, data);
         const resData = await response.data;
