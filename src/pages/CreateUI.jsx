@@ -161,7 +161,7 @@ const CreateUi = () => {
             />
           </div>
 
-          {/* <p className="text-lg text-white/70 font-semibold">
+          <p className="text-lg text-black font-semibold">
             Duration Preference
           </p>
 
@@ -172,7 +172,7 @@ const CreateUi = () => {
               options={durationOptions}
               defaultOption="Choose Video Duration"
             />
-          </div> */}
+          </div>
 
           {/* <Step number="3" />
           <GradientHeading text="Create Video" />
