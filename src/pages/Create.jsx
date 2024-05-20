@@ -81,75 +81,79 @@ const Create = () => {
         <Step
         number='1'
         />
-        <GradientHeading
-        text='Destination'/>
-        <p className='text-lg text-white/70 font-semibold'>The account where your video series will be posted</p>
+         <GradientHeading text="Post To" />
+          <p className="text-lg text-white/70 font-semibold">
+            The account where your video series will be posted
+          </p>
 
-        <div className='w-full pb-14'>
-        <SelectOption
-        selectedOption={destination} 
-        setSelectedOption={setDestination}
-        options={destinationOptions}
-        defaultOption='Select Destination'
-        />
-        </div>
-        {/* step 2 */}
-        <Step
-        number='2'
-        />
-        <GradientHeading
-        text='Content'/>
-        <p className='text-lg text-white/70 font-semibold'>What will your video series be about?</p>
+          <div className="w-full pb-14">
+            <SelectOption
+              selectedOption={destination}
+              setSelectedOption={setDestination}
+              options={destinationOptions}
+              defaultOption="Select Where To Post"
+            />
+          </div>
 
-        <div className='w-full  pb-6'>
-          <ContentSelect
-          options={contentOptions}
-          selectedOption={content}
-          setSelectedOption={setContent}
-          defaultOption='Choose Content'
-          customContent={customContent}
-          setCustomContent={setCustomContent}
-          placeholder= 'Example Please share a concise and captivating account of a lesser-known, yet intriguing, historical event. The event MUST be real and factual. Begin with a captivating introduction or question to hook the audience.'         
-          />
-  
-        </div> 
+          <Step number="2" />
+          <GradientHeading text="Topic" />
 
-        <p className='text-lg text-white/70 font-semibold'>Narration Voice</p>
+          <p className="text-lg text-white/70 font-semibold">
+            Choose a topic for your video.
+          </p>
 
-        <div className='w-full  pb-6'>
-        <VoiceOption
-          selectedOption={narrator} 
-          setSelectedOption={setNarrator}
-          options={narrationOptions}
-          defaultOption='Choose Narrator Voice'
-        />
+          <div className="w-full pb-6">
+            <ContentSelect
+              options={contentOptions}
+              selectedOption={content}
+              setSelectedOption={setContent}
+              defaultOption="Choose Content"
+              customContent={customContent}
+              setCustomContent={setCustomContent}
+              placeholder="Example Please share a concise and captivating account of a lesser-known, yet intriguing, historical event. The event MUST be real and factual. Begin with a captivating introduction or question to hook the audience."
+            />
+          </div>
 
-        </div>
-        <p className='text-lg text-white/70 font-semibold'>Video Language</p>
+          <p className="text-lg text-white/70 font-semibold">Video Language</p>
 
-        <div className='w-full  pb-6'>
-        <SelectOption
-        selectedOption={language} 
-        setSelectedOption={setLanguage}
-        options={languageOptions}
-        defaultOption='Choose Video Language'
-        /></div>
-        <p className='text-lg text-white/70 font-semibold'>Duration Preference</p>
+          <div className="w-full pb-6">
+            <SelectOption
+              selectedOption={language}
+              setSelectedOption={setLanguage}
+              options={languageOptions}
+              defaultOption="Choose a Language for Video"
+            />
+          </div>
 
-        <div className='w-full  pb-16'>
-        <SelectOption
-        selectedOption={duration} 
-        setSelectedOption={setDuration}
-        options={durationOptions}
-        defaultOption='Choose Video Duration'
-        /></div>
-        {/* step 3 */}
-        <Step
-        number='3'
-        />
-        <GradientHeading
-        text='Create'/>
-        <p className='text-lg text-white/70 font-semibold pb-5'>You will be able to preview your upcoming videos before posting</p>
+          <p className="text-lg text-white/70 font-semibold">Narrator Voice</p>
+
+          <div className="w-full pb-6">
+            <VoiceOption
+              selectedOption={narrator}
+              setSelectedOption={setNarrator}
+              options={narrationOptions}
+              defaultOption="Choose Narrator Voice"
+            />
+          </div>
+
+          {/* <p className="text-lg text-white/70 font-semibold">
+            Duration Preference
+          </p>
+
+          <div className="w-full pb-16">
+            <SelectOption
+              selectedOption={duration}
+              setSelectedOption={setDuration}
+              options={durationOptions}
+              defaultOption="Choose Video Duration"
+            />
+          </div> */}
+
+          <Step number="3" />
+          <GradientHeading text="Create Video" />
+          <p className="text-lg text-white/70 font-semibold pb-5">
+            You will get email link to preview your upcoming videos before posting.
+          </p>
 
        <div className=' flex justify-center items-center'>
        <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-3 px-20 text-lg rounded-lg font-semibold my-5' onClick={handleCreateSeries}>CREATE SERIES</button>

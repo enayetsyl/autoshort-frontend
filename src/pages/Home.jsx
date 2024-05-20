@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import CreateHomePage from './CreateHomePage'
 
@@ -9,8 +10,8 @@ const Home = () => {
       <Hero/>
       <CreateHomePage/>
       {/* <HowWork/>
-      <Pricing/>
-      <Footer/> */}
+      <Pricing/>*/}
+     <Footer/> 
     </div>
   )
 }

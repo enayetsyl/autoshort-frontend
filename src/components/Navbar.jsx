@@ -34,7 +34,7 @@ const Navbar = () => {
     <div className="bg-primary border-b-2 border-accent ">
       <div className="max-w-6xl mx-auto py-4 px-5">
         {/* container div */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-row-reverse justify-between items-center">
           {/* logo and name */}
           <Link to='/'>
           <div className="flex justify-center items-center gap-3">
@@ -62,10 +62,12 @@ const Navbar = () => {
 
             <Link to="register">
               {" "}
-              <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
+              <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg mr-4">
                 Sign Up
               </button>
-              <button onClick={logOut}>Logout</button>
+              <button 
+              className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg "
+              onClick={logOut}>Logout</button>
             </Link>
 
           </div>
