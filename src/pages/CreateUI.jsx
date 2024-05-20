@@ -5,6 +5,7 @@ import SelectOption from "../components/SelectOption.jsx";
 import ContentSelect from "../components/ContentSelect.jsx";
 import VoiceOption from "../components/VoiceOption.jsx";
 import axios from "axios";
+import { LuSend } from "react-icons/lu";
 import {
   destinationOptions,
   durationOptions,
@@ -15,7 +16,7 @@ import {
 import { AuthContext } from "../provider/AuthProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
-const CreateHomePage = () => {
+const CreateUi = () => {
   const [destination, setDestination] = useState(null);
   const [content, setContent] = useState(null);
   const [narrator, setNarrator] = useState(null);
@@ -87,21 +88,26 @@ const CreateHomePage = () => {
   };
 
   return (
-    <div className="mb-20">
+    <div className="mb-20 ">
+      <div className="flex justify-start items-center gap-5 max-w-2xl mx-auto ">
+      <div className="bg-gray-200 rounded-full p-3 text-2xl ml-5">
+      <LuSend />
+      </div>
       <div className="pb-10">
         <h1 className="text-center text-black text-4xl font-bold pt-16">
-          CREATE A SERIES
+          NEW SERIES REQUEST
         </h1>
         <p className="text-center text-black/70 font-semibold pt-4">
-          Schedule a series of Faceless Videos to post on auto-pilot.
+          Use this form to create a new series for faceless video.
         </p>
+      </div>
       </div>
 
       <div className="px-5 md:px-16">
-        <div className="bg-slate-600 max-w-2xl mx-auto px-8 py-10 md:px-16 shadow-xl rounded-lg">
-          <Step number="1" />
-          <GradientHeading text="Post To" />
-          <p className="text-lg text-white/70 font-semibold">
+        <div className="bg-white/60 max-w-2xl mx-auto px-8 py-10 md:px-16 shadow-xl rounded-lg border">
+          {/* <Step number="1" /> */}
+          {/* <GradientHeading text="Post To" /> */}
+          <p className="text-lg text-black font-semibold">
             The account where your video series will be posted
           </p>
 
@@ -114,10 +120,10 @@ const CreateHomePage = () => {
             />
           </div>
 
-          <Step number="2" />
-          <GradientHeading text="Topic" />
+          {/* <Step number="2" />
+          <GradientHeading text="Topic" /> */}
 
-          <p className="text-lg text-white/70 font-semibold">
+          <p className="text-lg text-black font-semibold">
             Choose a topic for your video.
           </p>
 
@@ -133,7 +139,7 @@ const CreateHomePage = () => {
             />
           </div>
 
-          <p className="text-lg text-white/70 font-semibold">Video Language</p>
+          <p className="text-lg text-black font-semibold">Video Language</p>
 
           <div className="w-full pb-6">
             <SelectOption
@@ -144,7 +150,7 @@ const CreateHomePage = () => {
             />
           </div>
 
-          <p className="text-lg text-white/70 font-semibold">Narrator Voice</p>
+          <p className="text-lg text-black font-semibold">Narrator Voice</p>
 
           <div className="w-full pb-6">
             <VoiceOption
@@ -168,15 +174,21 @@ const CreateHomePage = () => {
             />
           </div> */}
 
-          <Step number="3" />
+          {/* <Step number="3" />
           <GradientHeading text="Create Video" />
           <p className="text-lg text-white/70 font-semibold pb-5">
             You will get email link to preview your upcoming videos before posting.
-          </p>
+          </p> */}
 
           <div className="flex justify-center items-center">
-            <button
+            {/* <button
               className="bg-gradient-to-r from-primary to-blue-700 text-white py-3 px-20 text-lg rounded-lg font-semibold my-5"
+              onClick={handleCreateSeries}
+            >
+              CREATE SERIES
+            </button> */}
+            <button
+              className="bg-black text-white py-3 px-20 text-lg rounded-lg font-semibold my-5"
               onClick={handleCreateSeries}
             >
               CREATE SERIES
@@ -188,4 +200,4 @@ const CreateHomePage = () => {
   );
 };
 
-export default CreateHomePage;
+export default CreateUi;

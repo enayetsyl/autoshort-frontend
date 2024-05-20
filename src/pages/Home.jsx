@@ -1,6 +1,7 @@
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import CreateHomePage from './CreateHomePage'
+import CreateUi from './CreateUI'
 
 
 const Home = () => {
@@ -8,7 +9,8 @@ const Home = () => {
     <div className=''>
       {/* <Navbar/> */}
       <Hero/>
-      <CreateHomePage/>
+      <CreateUi/>
+      {/* <CreateHomePage/> */}
       {/* <HowWork/>
       <Pricing/>*/}
      <Footer/> 
