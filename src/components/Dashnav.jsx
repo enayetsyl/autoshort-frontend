@@ -32,6 +32,7 @@ const Dashnav = () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, []);
+
   return (
     <div className="bg-primary border-b-2 border-accent ">
       <div className="max-w-6xl mx-auto py-4 px-5">
@@ -60,6 +61,11 @@ const Dashnav = () => {
                 CREATE
               </button>
             </Link>
+            <Link to="/dashboard/affiliate">
+                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg block w-full">
+                    AFFILIATE
+                  </button>
+                </Link>
 
             <Link to="/dashboard/billing">
               <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
@@ -101,6 +107,11 @@ const Dashnav = () => {
               </button>
             </Link>
 
+            <Link to="/dashboard/affiliate" className='block'>
+              <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
+                AFFILIATE
+              </button>
+            </Link>
             <Link to="/dashboard/billing" className='block'>
               <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
                 BILLING

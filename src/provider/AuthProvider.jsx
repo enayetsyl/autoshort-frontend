@@ -2,6 +2,7 @@ import  { createContext,  useEffect, useState } from "react";
 import { GoogleAuthProvider,  getAuth, onAuthStateChanged, signInWithPopup, signOut,  } from 'firebase/auth'
 import app from "../firebase/firebase.config";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 
 
@@ -40,7 +41,7 @@ const AuthProvider = ({children}) => {
         localStorage.removeItem('user');
         setUser(null);
       }
-      setLoading(false);
+      // setLoading(false);
     });
 
     return () => {

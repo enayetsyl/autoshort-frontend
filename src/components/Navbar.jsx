@@ -80,12 +80,8 @@ const Navbar = () => {
               <GiHamburgerMenu />
             </div>
             {isDropdownOpen && (
-              <div className="absolute top-8 w-32 right-0 bg-primary border border-accent rounded-md shadow-md">
-                {/* <Link to="#pricing">
-                  <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg">
-                    Pricing
-                  </button>
-                </Link> */}
+              <div className="absolute top-8 w-32 left-0 bg-primary border border-accent rounded-md shadow-md">
+               
 
                 <Link to="/login">
                   <button className="text-accent  hover:text-primary transition-all duration-300 hover:bg-gray-800 hover:px-3 hover:py-2 rounded-lg block w-full">

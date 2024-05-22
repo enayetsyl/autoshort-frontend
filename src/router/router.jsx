@@ -11,6 +11,9 @@ import Create from "../pages/Create";
 import Account from "../pages/Account";
 import Billing from "../pages/Billing";
 import PrivateRoute from "./PrivateRoute";
+import CreateUi from "../pages/CreateUI";
+import AffiliateCreate from "../pages/AffiliateCreate";
+import Contact from "../pages/Contact";
  
   
   const router = createBrowserRouter([
@@ -30,6 +33,10 @@ import PrivateRoute from "./PrivateRoute";
           path: '/register',
           element: <Register />
         },
+        {
+          path: '/contact',
+          element: <Contact />
+        },
   
       ]
     },{
@@ -42,7 +49,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
           path:'create',
-          element:<PrivateRoute><Create/></PrivateRoute>
+          element:<PrivateRoute><CreateUi/></PrivateRoute>
         },
         {
           path:'account',
@@ -51,6 +58,10 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'billing',
           element:<PrivateRoute><Billing/></PrivateRoute>
+        },
+        {
+          path:'affiliate',
+          element:<PrivateRoute><AffiliateCreate/></PrivateRoute>
         },
       ]
     }

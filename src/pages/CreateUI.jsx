@@ -23,7 +23,7 @@ const CreateUi = () => {
   const [language, setLanguage] = useState(null);
   const [duration, setDuration] = useState(null);
   const [customContent, setCustomContent] = useState("");
-  const { user, googleSignIn, setPostLoginCallback, setUser } =
+  const { user, googleSignIn, setPostLoginCallback, setUser, setLoading } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -50,6 +50,7 @@ const CreateUi = () => {
         ...formData,
       };
       try {
+        setLoading(true)
         const response = await axios.post(
           `${import.meta.env.VITE_BACKEND}/series`,
           data
@@ -60,6 +61,9 @@ const CreateUi = () => {
         navigate("/dashboard");
       } catch (error) {
         console.error("Error sending video generation request:", error);
+        alert(`${error.message}`)
+      } finally{
+        setLoading(false)
       }
     };
 
