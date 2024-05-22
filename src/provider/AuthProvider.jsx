@@ -94,7 +94,7 @@ const getUserData = async (userData) => {
     // setUser,
     logOut,
     userPlan,
-    setLoading, setPostLoginCallback
+    setLoading, setPostLoginCallback, setUserPlan
   }
 
   return (
