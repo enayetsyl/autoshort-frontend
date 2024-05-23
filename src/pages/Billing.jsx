@@ -5,25 +5,79 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Billing = () => {
   const { userPlan } = useContext(AuthContext)
+console.log('userplan in billing', userPlan)
 
-  const handlePayment = async (price) => {
+  const handlePayment = async (e, price) => {
+   e.preventDefault()
+    if(!userPlan){
+      alert("Please refresh the window and try again.")
+      return
+    }
+    const amount = price * 100;
+    const currency = "INR";
+    const receipt = `${userPlan._id}`
+    console.log('price ', amount, currency, receipt)
     try {
-      const requestData = {
+      const paymentData = {
         userId: userPlan._id,
-        price: price,
+        amount, currency, receipt
       };
-      console.log(requestData);
+      console.log(paymentData);
   
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND}/payment`,
-        requestData
-      );
-  
-      if (response.status === 200) {
-        alert("Payment successful");
-      } else {
-        alert("Payment failed");
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/order`, paymentData)
+      const order = await response.data
+
+      console.log('order', order)
+
+      const options = {
+        key: "rzp_live_ctOBr2JSHG9Pu7",
+        amount, 
+        currency,
+        name: "autoshorts.click",
+        description: "Test Transaction",
+        order_id: order.id,
+        handler: async function (response){
+          const body = { ...response }
+          console.log('body inside handler', body)
+          const validateRes = await axios.post(`${import.meta.env.VITE_BACKEND}/order/validate`, body)
+          const jsonRes = await validateRes.data
+          console.log('jsonRes', jsonRes)
+        },
+        prefill: {
+          name: userPlan.email,
+          email: userPlan.email,
+          contact: '010200000'
+        },
+        notes: {
+          address: "Autoshorts.click corporate office"
+        },
+        theme: {
+          color: "#3399cc"
+        }
       }
+
+      const rzp1 = new window.Razorpay(options)
+      rzp1.on("payment.failed", function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      rzp1.open();
+
+      // const response = await axios.post(
+      //   `${import.meta.env.VITE_BACKEND}/payment`,
+      //   requestData
+      // );
+  
+      // if (response.status === 200) {
+      //   alert("Payment successful");
+      // } else {
+      //   alert("Payment failed");
+      // }
     } catch (error) {
       console.error("Error processing payment:", error);
       alert("Error processing payment");
@@ -158,7 +212,7 @@ const Billing = () => {
           </div>
 
           <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'
-          onClick={() => handlePayment(19)}
+          onClick={(e) => handlePayment(e,19)}
           > BUY</button>
 
         </div>
@@ -215,7 +269,7 @@ const Billing = () => {
             <p className=''>Download Videos</p>
           </div>
 
-          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold' onClick={() => handlePayment(39)}> BUY</button>
+          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold' onClick={(e) => handlePayment(e, 39)}> BUY</button>
 
         </div>
         {/* card 4 */}
@@ -272,7 +326,7 @@ const Billing = () => {
           </div>
 
           <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'
-          onClick={() => handlePayment(69)}
+          onClick={(e) => handlePayment(e, 69)}
           > BUY</button>
 
         </div>
