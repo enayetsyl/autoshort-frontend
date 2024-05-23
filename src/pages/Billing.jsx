@@ -1,7 +1,35 @@
-import React from "react";
+import axios from "axios";
 import GradientHeading from "../components/GradientHeading";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Billing = () => {
+  const { userPlan } = useContext(AuthContext)
+
+  const handlePayment = async (price) => {
+    try {
+      const requestData = {
+        userId: userPlan._id,
+        price: price,
+      };
+      console.log(requestData);
+  
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND}/payment`,
+        requestData
+      );
+  
+      if (response.status === 200) {
+        alert("Payment successful");
+      } else {
+        alert("Payment failed");
+      }
+    } catch (error) {
+      console.error("Error processing payment:", error);
+      alert("Error processing payment");
+    }
+  };
+  
   return (
     <div className="max-w-6xl mx-auto">
       <div className="pt-20 px-5 pb-5">
@@ -73,7 +101,7 @@ const Billing = () => {
             <p className='line-through text-gray-400'>Download Videos</p>
           </div>
 
-          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'> BUY</button>
+          <button className='bg-gray-500 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'> BUY</button>
 
         </div>
         {/* card 2 */}
@@ -129,7 +157,9 @@ const Billing = () => {
             <p className=''>Download Videos</p>
           </div>
 
-          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'> BUY</button>
+          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'
+          onClick={() => handlePayment(19)}
+          > BUY</button>
 
         </div>
         {/* card 3 */}
@@ -185,7 +215,7 @@ const Billing = () => {
             <p className=''>Download Videos</p>
           </div>
 
-          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'> BUY</button>
+          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold' onClick={() => handlePayment(39)}> BUY</button>
 
         </div>
         {/* card 4 */}
@@ -241,7 +271,9 @@ const Billing = () => {
             <p className=''>Download Videos</p>
           </div>
 
-          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'> BUY</button>
+          <button className='bg-gradient-to-r from-primary to-blue-700 text-white py-2 mt-5 w-full text-xs rounded-lg font-bold'
+          onClick={() => handlePayment(69)}
+          > BUY</button>
 
         </div>
       </div>

@@ -15,7 +15,7 @@ export const durationOptions = [
   
   export const destinationOptions = [
     { id: 1, icon: <MdAlternateEmail />, name: 'Email Me Instead' },
-    { id: 2, icon: <IoLogoTiktok />, name: 'Link a TikTok Account' },
+    // { id: 2, icon: <IoLogoTiktok />, name: 'Link a TikTok Account' },
     { id: 3, icon: <FaYoutube />, name: 'Link a YouTube Account' },
    
   ];
@@ -47,17 +47,17 @@ export const durationOptions = [
   
   
   export const contentOptions = [
-    { id: 1,  name: 'Random AI Story' },
-    { id: 2,  name: 'Scary Stories' },
-    { id: 3,  name: 'Motivational' },
-    { id: 4,  name: 'Bedtime Stories' },
-    { id: 5,  name: 'Interesting History' },
-    { id: 6,  name: 'Fun Facts' },
-    { id: 7,  name: 'Long Form Jokes' },
-    { id: 8,  name: 'Life Pro Tips' },
-    { id: 9,  name: 'ELI5' },
-    { id: 10,  name: 'Philosophy' },
-    { id: 11,  name: 'Product Marketing' },
+    { id: 1,  name: 'AI Anecdotes' },
+    { id: 2,  name: 'Spooky Tales' },
+    { id: 3,  name: 'Uplifting Moments' },
+    { id: 4,  name: 'Nighttime Narratives' },
+    { id: 5,  name: 'Historical Highlights' },
+    { id: 6,  name: 'Fascinating Facts' },
+    { id: 7,  name: 'Extended Laughs' },
+    { id: 8,  name: 'Life Hacks' },
+    { id: 9,  name: 'Simplified Insights' },
+    { id: 10,  name: 'Deep Thoughts' },
+    { id: 11,  name: 'Marketing Mastery' },
     // { id: 12,  name: 'Custom' },
    
   ];
@@ -65,10 +65,10 @@ export const durationOptions = [
   
   
   export const narrationOptions = [
-    { id: 1, icon: <FaPlay />,  name: 'Echo', audio: audio1},
-    { id: 2, icon: <FaPlay />, name: 'Alloy', audio: audio2 },
-    { id: 3, icon: <FaPlay />, name: 'Onyx', audio: audio3 },
-    { id: 4, icon: <FaPlay />, name: 'Fable', audio: audio3 },
-    { id: 5, icon: <FaPlay />, name: 'Nova', audio: audio3 },
-    { id: 6, icon: <FaPlay />, name: 'Shimmer', audio: audio3 },
+    { id: 1, icon: <FaPlay />,  name: 'Reverberate', audio: audio1},
+    { id: 2, icon: <FaPlay />, name: 'Metal', audio: audio2 },
+    { id: 3, icon: <FaPlay />, name: 'Obsidian', audio: audio3 },
+    { id: 4, icon: <FaPlay />, name: 'Myth', audio: audio3 },
+    { id: 5, icon: <FaPlay />, name: 'Supernova', audio: audio3 },
+    { id: 6, icon: <FaPlay />, name: 'Glimmer', audio: audio3 },
   ];

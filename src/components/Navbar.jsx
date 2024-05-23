@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className="text-accent text-2xl">
               <GiDoctorFace />
             </div>
-            <h1 className="text-2xl font-bold text-accent">AutoShorts.ai</h1>
+            <h1 className="text-2xl font-bold text-accent">autoshorts.click</h1>
           </div>
           </Link>
           {/* menu */}

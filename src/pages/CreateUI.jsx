@@ -99,10 +99,10 @@ const CreateUi = () => {
       </div>
       <div className="pb-10">
         <h1 className="text-center text-black text-4xl font-bold pt-16">
-          NEW SERIES REQUEST
+          NEW CHANNEL REQUEST
         </h1>
         <p className="text-center text-black/70 font-semibold pt-4">
-          Use this form to create a new series for faceless video.
+          Use this form to create a new channel for faceless video.
         </p>
       </div>
       </div>
@@ -112,7 +112,7 @@ const CreateUi = () => {
           {/* <Step number="1" /> */}
           {/* <GradientHeading text="Post To" /> */}
           <p className="text-lg text-black font-semibold">
-            The account where your video series will be posted
+            The account where your video will be posted
           </p>
 
           <div className="w-full pb-14">
@@ -195,7 +195,7 @@ const CreateUi = () => {
               className="bg-black text-white py-3 px-20 text-lg rounded-lg font-semibold my-5"
               onClick={handleCreateSeries}
             >
-              CREATE SERIES
+              CREATE CHANNEL
             </button>
           </div>
         </div>
