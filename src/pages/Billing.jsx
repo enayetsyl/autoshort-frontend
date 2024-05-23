@@ -37,7 +37,7 @@ console.log('userplan in billing', userPlan)
         description: "Test Transaction",
         order_id: order.id,
         handler: async function (response){
-          const body = { ...response }
+          const body = { ...response, userId: userPlan._id}
           console.log('body inside handler', body)
           const validateRes = await axios.post(`${import.meta.env.VITE_BACKEND}/order/validate`, body)
           const jsonRes = await validateRes.data
