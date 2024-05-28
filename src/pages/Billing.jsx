@@ -46,7 +46,7 @@ console.log('userplan in billing', userPlan)
         prefill: {
           name: userPlan.email,
           email: userPlan.email,
-          contact: '010200000'
+          contact: '0102000000'
         },
         notes: {
           address: "Autoshorts.click corporate office"
@@ -68,16 +68,7 @@ console.log('userplan in billing', userPlan)
       });
       rzp1.open();
 
-      // const response = await axios.post(
-      //   `${import.meta.env.VITE_BACKEND}/payment`,
-      //   requestData
-      // );
-  
-      // if (response.status === 200) {
-      //   alert("Payment successful");
-      // } else {
-      //   alert("Payment failed");
-      // }
+   
     } catch (error) {
       console.error("Error processing payment:", error);
       alert("Error processing payment");
