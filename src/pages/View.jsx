@@ -97,6 +97,7 @@ const View = () => {
       console.error(error);
     }
   };
+
   // const handlePostVideo = async (item) => {
   //   if(!googleId){
   //     alert("Connect a youtube account first")
@@ -115,12 +116,41 @@ const View = () => {
   //   }
 
   // };
+  
+  const handleUploadVideo = async () => {
+    if(!googleId){
+      alert("Connect a youtube account first")
+      return
+    }
+
+    const testData  = {
+      scheduleDateTime: "2024-05-28T10:00:00Z",
+      videoLink: "https://res.cloudinary.com/dj3qabx11/video/upload/v1715665933/w0jitr3qgelawxze5chz.mp4",
+      title: "Sample Video Title",
+      thumbnailUrl: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+      tags: ["test1", "test2", "test3"],
+      description: "This is a sample description for the video.",
+      email: userPlan?.email
+    };
+
+    console.log('tastData', testData)
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND}/upload_video`, testData);
+      console.log(response?.data);
+      alert(`${response.data}`)
+    } catch (error) {
+      console.error(error);
+      alert(`${error}`)
+    }
+
+  };
 
   return (
     <div className="max-w-6xl mx-auto p-10">
       <h1 className="text-2xl font-bold text-black pb-3">YOUR CHANNELS</h1>
       <div className="pb-10">
         <hr className="h-[3px] bg-black " />
+        <button className="py-2 px-4 bg-yellow-400 text-black font-bold text-center " onClick={handleUploadVideo}>Test upload Single video</button>
       </div>
 
       {seriesData.length > 0 ? (
