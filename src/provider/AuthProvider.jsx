@@ -7,8 +7,6 @@ import Loading from "../components/Loading";
 
 
 export const AuthContext = createContext()
-const auth = getAuth(app)
-const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null)
@@ -18,6 +16,8 @@ const AuthProvider = ({children}) => {
   console.log('user in auth', user?.email)
   const [postLoginCallback, setPostLoginCallback] = useState(null);
   
+  const auth = getAuth(app)
+  const googleProvider = new GoogleAuthProvider()
   // console.log('user plan in auth', userPlan)
   const googleSignIn = () => {
       return signInWithPopup(auth, googleProvider)

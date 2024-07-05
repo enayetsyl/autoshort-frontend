@@ -49,6 +49,7 @@ const CreateUi = () => {
         userEmail: user?.email,
         ...formData,
       };
+      console.log('data', data)
       try {
         setLoading(true)
         const response = await axios.post(
@@ -56,6 +57,7 @@ const CreateUi = () => {
           data
         );
         const resData = await response.data;
+        console.log('res data', resData)
         alert(`${resData.message}`);
         localStorage.removeItem("formData"); // Clear the form data after submission
         navigate("/dashboard");

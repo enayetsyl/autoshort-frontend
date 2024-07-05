@@ -36,6 +36,12 @@ const View = () => {
     window.location.href = `${import.meta.env.VITE_BACKEND}/connect_youtube`;
   };
 
+  const handleOnlyConnectYoutube = (item) => {
+    console.log("item inside youtube connect", item._id);
+    sessionStorage.setItem("taskId", item._id);
+    window.location.href = `${import.meta.env.VITE_BACKEND}/connect_youtube`;
+  };
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
@@ -65,7 +71,7 @@ const View = () => {
               googleId: googleIdFromUrl,
             }
           );
-          console.log("Server response for patch:", response.data);
+          console.log("Server response for patch:", response?.data);
         } catch (error) {
           console.error("Error making PATCH request:", error);
         }
@@ -91,7 +97,7 @@ const View = () => {
         }
       );
       console.log(response?.data);
-      alert(`${response.data.message}`);
+      alert(`${response?.data?.message}`);
     } catch (error) {
       alert(`${error}`);
       console.error(error);
@@ -124,20 +130,28 @@ const View = () => {
     }
 
     const testData  = {
-      scheduleDateTime: "2024-05-28T10:00:00Z",
-      videoLink: "https://res.cloudinary.com/dj3qabx11/video/upload/v1715665933/w0jitr3qgelawxze5chz.mp4",
-      title: "Sample Video Title",
-      thumbnailUrl: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
-      tags: ["test1", "test2", "test3"],
-      description: "This is a sample description for the video.",
-      email: userPlan?.email
+      cloudinaryUrl:"https://res.cloudinary.com/dj3qabx11/video/upload/v1715665933/w0jitr3qgelawxze5chz.mp4",
+      
+      thumbnail:  "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+      tags: ["test0", "test0", "test0"],
+      description: "This is a sample description for the video.", 
+      title: "Sample Video Title 10",googleId
+
+
+      // scheduleDateTime: "2024-05-28T10:00:00Z",
+      // videoLink: "https://res.cloudinary.com/dj3qabx11/video/upload/v1715665933/w0jitr3qgelawxze5chz.mp4",
+      // title: "Sample Video Title",
+      // thumbnailUrl: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+      // tags: ["test1", "test2", "test3"],
+      // description: "This is a sample description for the video.",
+      // email: userPlan?.email
     };
 
     console.log('tastData', testData)
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND}/upload_video`, testData);
       console.log(response?.data);
-      alert(`${response.data}`)
+      alert(`${response?.data?.message}: for google id: ${response?.data?.googleId}. The video id is ${response?.data?.videoId}`)
     } catch (error) {
       console.error(error);
       alert(`${error}`)
@@ -152,8 +166,19 @@ const View = () => {
         <hr className="h-[3px] bg-black " />
         <button className="py-2 px-4 bg-yellow-400 text-black font-bold text-center " onClick={handleUploadVideo}>Test upload Single video</button>
       </div>
+      <div className="pb-10">
+        <hr className="h-[3px] bg-black " />
+        <button className="py-2 px-4 bg-yellow-400 text-black font-bold text-center " onClick={()=> handleOnlyConnectYoutube(userPlan?._id)}>Connect Youtube Account</button>
+        {
+          googleId ? (
+            <p>Your google Id for youtube upload is : {googleId}</p>
+          ) : (
+            <p>You did not connected any youtube account.</p>
+          )
+        }
+      </div>
 
-      {seriesData.length > 0 ? (
+      {seriesData?.length > 0 ? (
         seriesData?.map((item) => (
           <div
             className="mt-10 p-8 w-full rounded-lg bg-slate-600"
